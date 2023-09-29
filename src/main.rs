@@ -2,7 +2,7 @@ use leptos::*;
 use styled::style;
 
 #[component]
-pub fn MyComponent() -> impl IntoView {
+pub fn MyComponent(cx: Scope) -> impl IntoView {
 
     let styles = style!(
       div {
@@ -12,13 +12,14 @@ pub fn MyComponent() -> impl IntoView {
     );
 
     styled::view! {
+        cx,
         styles,
         <div>"This text should be red with white text."</div>
     }
 }
 
 #[component]
-pub fn AnotherComponent() -> impl IntoView {
+pub fn AnotherComponent(cx: Scope) -> impl IntoView {
 
     // note were using a plain div selector and it wont clash with MyComponent's div style!
     let styles = style!(
@@ -29,7 +30,7 @@ pub fn AnotherComponent() -> impl IntoView {
     );
 
     styled::view! {
-        
+        cx,
         styles,
         <div>"This text should be blue with gray text."</div>
     }
